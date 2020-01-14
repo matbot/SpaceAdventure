@@ -12,10 +12,8 @@ void main(List<String> arguments) {
 
   print("Nice to meet you, $name. My name is Eliza. I'm an old friend of Alexa.");
 
-  print(
-	"Let's go on an adventure!\n"
-	"Shall I randomly choose a planet for you to visit? (Y or N)"
-  );
+  print("Let's go on an adventure!\n"
+      "Shall I randomly choose a planet for you to visit? (Y or N)");
 
   String answer = stdin.readLineSync();
 
@@ -23,6 +21,6 @@ void main(List<String> arguments) {
 
   String planet = stdin.readLineSync();
 
-  print("Traveling to $planet...");
-  print("Arrived at $planet. A very cold planet, furthest from the sun.");
+  print("Traveling to $planet...\n"
+      "Arrived at $planet. A very cold planet, furthest from the sun.");
 }
