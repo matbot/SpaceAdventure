@@ -1,6 +1,6 @@
-import 'package:SpaceAdventure/SpaceAdventure.dart';
+import 'package:SpaceAdventure/space_adventure.dart';
 
 void main(List<String> arguments) {
-	final spaceAdventure = SpaceAdventure();
-	spaceAdventure.start();
+  // Concise inline class object instantiation and member function call.
+  SpaceAdventure(planetarySystem: PlanetarySystem(name: "Sol")).start();
 }
