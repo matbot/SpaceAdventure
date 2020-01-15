@@ -1,13 +1,23 @@
+/* Author: Mathew McDade
+   Date: 1/14/20
+*/
+
 import 'dart:io';
 import 'planetary_system.dart';
+import 'planet.dart';
 
 class SpaceAdventure {
   // ATTRIBUTES
-  PlanetarySystem planetarySystem;
-  // METHODS
+  final PlanetarySystem planetarySystem;
 
   // CONSTRUCTOR
   SpaceAdventure({this.planetarySystem});
+
+  // METHODS
+  String responsePrompt(String prompt) {
+    print(prompt);
+    return stdin.readLineSync();
+  }
 
   void start() {
     printGreeting();
@@ -16,32 +26,45 @@ class SpaceAdventure {
     travel(getRandomYN());
   }
 
-  void printGreeting() {
-    print("Welcome to the ${planetarySystem.name} System!");
-    print("There are 8 planets to explore");
-  }
-
   void printIntroduction(String name) {
     print(
         "Nice to meet you, $name. My name is Eliza. I'm an old friend of Alexa.");
   }
 
-  String responsePrompt(String prompt) {
-    print(prompt);
-    return stdin.readLineSync();
+  void printGreeting() {
+    print("Welcome to the ${planetarySystem.name}!");
+    print("There are ${planetarySystem.planets.length} planets to explore");
   }
 
   void travelRandom() {
-    travelTo("Random");
+    planetarySystem.planets.shuffle();
+    final randomPlanet = planetarySystem.planets[0];
+    travelTo(randomPlanet);
   }
 
   void travelSelected() {
-    travelTo(responsePrompt("What planet do you want to travel to?"));
+    print("Planets in this system:");
+    planetarySystem.planets.forEach((planet) => print(planet.name));
+    
+    String selectedPlanetName;
+    int selectedPlanetIndex;
+    Planet selectedPlanet;
+    do {
+		selectedPlanetName = responsePrompt("Which planet do you want to travel to?");
+		selectedPlanet = planetarySystem.planets.firstWhere((planet) => planet.name ==
+				selectedPlanetName, orElse: () => null);
+		if (selectedPlanet == null) {
+			print("I can't find that planet!\n");
+		}
+    } while (selectedPlanet == null);
+
+    //travelTo(planetarySystem.planets[selectedPlanetIndex]);
+    travelTo(selectedPlanet);
   }
 
-  void travelTo(String planetName) {
-    print("Traveling to $planetName...\n"
-        "Arrived at $planetName. A very cold planet, furthest from the sun.");
+  void travelTo(Planet planet) {
+    print("Traveling to ${planet.name}...\n"
+        "Arrived at ${planet.name}. ${planet.description}");
   }
 
   void travel(bool randomDestination) {
