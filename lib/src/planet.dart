@@ -8,7 +8,8 @@ class Planet {
   final String name;
   final String description;
 
-  Planet({this.name,
+  Planet(
+      {this.name,
       this.description = "I don't know anything about this planet."});
 
   Planet.fromJson(Map<String, dynamic> json)
