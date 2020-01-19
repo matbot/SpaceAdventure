@@ -9,9 +9,12 @@ import 'planet.dart';
 class PlanetarySystem {
   final String name;
   final List<dynamic> planets;
+  int get numberOfPlanets {
+	  return this.planets.length;
+  }
 
   // Optional initializing formal constructor.
-  PlanetarySystem(this.name, this.planets);
+  PlanetarySystem({this.name = "Unknown Space", this.planets = const[]});
 
   // Concise initialization of member variables from JSON.
   PlanetarySystem.fromJson(Map<String, dynamic> json)

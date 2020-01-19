@@ -33,7 +33,7 @@ class SpaceAdventure {
 
   void printGreeting() {
     print("Welcome to the ${planetarySystem.name}!");
-    print("There are ${planetarySystem.planets.length} planets to explore");
+    print("There are ${planetarySystem.numberOfPlanets} planets to explore");
   }
 
   void travelRandom() {
