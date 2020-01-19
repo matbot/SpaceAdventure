@@ -10,9 +10,12 @@ class PlanetarySystem {
   final String name;
   final List<dynamic> planets;
   int get numberOfPlanets => planets.length;
+  bool get hasPlanets => planets.isNotEmpty;
+  // Note the use of the .. cascade operator to pass the shuffled list to .first.
+  Planet get randomPlanet => (planets..shuffle()).first;
 
   // Optional initializing formal constructor.
-  PlanetarySystem({this.name = "Unknown Space", this.planets = const[]});
+  PlanetarySystem({this.name = "Unknown Space", this.planets = const []});
 
   // Concise initialization of member variables from JSON.
   PlanetarySystem.fromJson(Map<String, dynamic> json)
