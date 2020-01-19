@@ -49,6 +49,7 @@ class SpaceAdventure {
     print("Planets in this system:");
     planetarySystem.planets.forEach((planet) => print(planet.name));
 
+    // TODO: refactor this section.
     String selectedPlanetName;
     int selectedPlanetIndex;
     Planet selectedPlanet;
@@ -63,7 +64,6 @@ class SpaceAdventure {
       }
     } while (selectedPlanet == null);
 
-    //travelTo(planetarySystem.planets[selectedPlanetIndex]);
     travelTo(selectedPlanet);
   }
 
