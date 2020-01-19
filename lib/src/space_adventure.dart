@@ -49,7 +49,7 @@ class SpaceAdventure {
     print("Planets in this system:");
     planetarySystem.planets.forEach((planet) => print(planet.name));
 
-    // TODO: refactor this section.
+    // TODO: refactor this section to a planetwithname getter in planetary system.
     String selectedPlanetName;
     int selectedPlanetIndex;
     Planet selectedPlanet;
